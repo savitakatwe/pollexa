@@ -19,7 +19,9 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    InterRegular: require("@tamagui/font-inter/otf/Inter-Regular.otf"),
+    InterMedium: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
+    InterSemiBold: require("@tamagui/font-inter/otf/Inter-SemiBold.otf"),
   });
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Dimensions, FlatList, SafeAreaView, Text, View } from "react-native";
-import { Button, H1, H6, Heading, Image, XStack, YStack } from "tamagui";
+import { Button, H3, Image, SizableText, XStack, YStack } from "tamagui";
 
 interface IData {
   id: number;
@@ -50,8 +50,12 @@ const StartScreen = () => {
           renderItem={({ item }) => (
             <>
               <YStack width={width} alignItems={"center"} padding={32}>
-                <Heading textAlign="center">{item.title}</Heading>
-                <H6 textAlign="center">{item.subTitle}</H6>
+                <YStack gap={"sp12"}>
+                  <H3 textAlign="center">{item.title}</H3>
+                  <SizableText textAlign="center" size={"$xxLarge"}>
+                    {item.subTitle}
+                  </SizableText>
+                </YStack>
                 <Image
                   source={imageSources[item.imageSrc]}
                   height={428}
