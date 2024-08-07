@@ -51,13 +51,7 @@ const StartScreen = () => {
             <>
               <YStack width={width} alignItems={"center"} padding={32}>
                 <Heading textAlign="center">{item.title}</Heading>
-
-                <XStack>
-                  <H6 textAlign="center" width={width * 0.8}>
-                    {item.subTitle}
-                  </H6>
-                </XStack>
-
+                <H6 textAlign="center">{item.subTitle}</H6>
                 <Image
                   source={imageSources[item.imageSrc]}
                   height={428}
@@ -67,7 +61,9 @@ const StartScreen = () => {
             </>
           )}
         />
-        <Button>Sign in with Google</Button>
+        <XStack paddingHorizontal={24}>
+          <Button flex={1}>Sign in with Google</Button>
+        </XStack>
       </SafeAreaView>
     </>
   );
