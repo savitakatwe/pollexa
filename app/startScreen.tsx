@@ -50,7 +50,7 @@ const StartScreen = () => {
           renderItem={({ item }) => (
             <>
               <YStack width={width} alignItems={"center"} padding={32}>
-                <YStack gap={"sp12"}>
+                <YStack gap={"$sp12"}>
                   <H3 textAlign="center">{item.title}</H3>
                   <SizableText textAlign="center" size={"$xxLarge"}>
                     {item.subTitle}

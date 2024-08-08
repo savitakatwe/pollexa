@@ -39,7 +39,10 @@ export default function RootLayout() {
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <Stack screenOptions={{ contentStyle: { backgroundColor: "#F8F8FF" } }}>
           <Stack.Screen name="index" />
-          <Stack.Screen name="startScreen" />
+          <Stack.Screen
+            name="startScreen"
+            options={{ headerTransparent: true, title: "" }}
+          />
           <Stack.Screen name="+not-found" />
         </Stack>
       </ThemeProvider>
