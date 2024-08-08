@@ -59,13 +59,14 @@ export const tokens = createTokens({
     sp36: 36,
     true: 0,
   },
-  radius: { 0: 0, 1: 3, br16: 16 },
+  radius: { 0: 0, 1: 3, br5: 5, br16: 16 },
   zIndex: { 0: 0, 1: 100, 2: 200 },
   color: {
     accent: "#5856D6",
     primary0: "#CDCCFF",
     primary25: "#9B99FF",
     primary100: "#5955FF",
+    tertiary: "#93A2B4",
     secondary300: "#1F202A",
     greyScale900: "#0D0D12",
     greyScale500: "#666D80",
@@ -74,6 +75,7 @@ export const tokens = createTokens({
     greyScale100: "#DFE1E7",
     greyScale50: "#ECEFF3",
     otherWhite: "#FFFFFF",
+    white50: "#FFFFFF50",
   },
 });
 
