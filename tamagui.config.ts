@@ -21,6 +21,7 @@ const headingFont = createFont({
 const bodyFont = createFont({
   family: "Inter, Helvetica, Arial, sans-serif",
   size: {
+    xxxLarge: 34,
     xxLarge: 22,
     xLarge: 18,
     large: 16,
@@ -61,6 +62,7 @@ export const tokens = createTokens({
   radius: { 0: 0, 1: 3, br16: 16 },
   zIndex: { 0: 0, 1: 100, 2: 200 },
   color: {
+    accent: "#5856D6",
     primary0: "#CDCCFF",
     primary25: "#9B99FF",
     primary100: "#5955FF",

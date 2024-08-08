@@ -40,6 +40,10 @@ export default function RootLayout() {
         <Stack screenOptions={{ contentStyle: { backgroundColor: "#F8F8FF" } }}>
           <Stack.Screen name="index" />
           <Stack.Screen
+            name="discover"
+            options={{ headerTransparent: true, title: "" }}
+          />
+          <Stack.Screen
             name="startScreen"
             options={{ headerTransparent: true, title: "" }}
           />
