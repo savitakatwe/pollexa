@@ -1,40 +1,20 @@
 import { Text } from "react-native";
-import { Image, SizableText, XStack, YStack } from "tamagui";
+import { Button, Image, Separator, SizableText, XStack, YStack } from "tamagui";
 import React from "react";
+import { CircleEllipsis } from "@tamagui/lucide-icons";
+import PollBoxHead from "@/components/PollBoxHead";
 
 const PollHeader = () => {
   return (
     <>
-      <YStack backgroundColor="$otherWhite" borderRadius={"$br16"}>
-        <XStack
-          paddingHorizontal={"$sp24"}
-          paddingTop={"$sp24"}
-          justifyContent={"space-between"}
-        >
-          <XStack alignItems={"center"} gap={"$sp4"}>
-            <Image
-              source={require("../../assets/Avatars/Avatar1.png")}
-              alt="Discover"
-              height={34}
-              width={34}
-            />
-            <SizableText size={"$xLarge"}>John Smith</SizableText>
-          </XStack>
-          <XStack alignItems={"center"}>
-            <SizableText size={"$large"} color={"$tertiary"}>
-              2 months ago
-            </SizableText>
-          </XStack>
-        </XStack>
-
+      <YStack
+        backgroundColor="$otherWhite"
+        borderRadius={"$br16"}
+        paddingHorizontal={"$sp20"}
+      >
+        <PollBoxHead />
         {/*line*/}
-        <YStack
-          alignContent={"center"}
-          height={1}
-          backgroundColor={"black"}
-          width={"80%"}
-          marginVertical={"$sp4"}
-        />
+        <Separator marginVertical={10} backgroundColor={"$lineGray"} />
       </YStack>
     </>
   );

@@ -45,15 +45,18 @@ const bodyFont = createFont({
 export const tokens = createTokens({
   size: {
     0: 0,
+    sz22: 22,
     sz48: 48,
     sz52: 52,
     true: 52,
   },
   space: {
     sp4: 4,
+    sp5: 5,
     sp8: 8,
     sp12: 12,
     sp16: 16,
+    sp20: 20,
     sp24: 24,
     sp32: 32,
     sp36: 36,
@@ -63,10 +66,11 @@ export const tokens = createTokens({
   zIndex: { 0: 0, 1: 100, 2: 200 },
   color: {
     accent: "#5856D6",
+    tertiary: "#93A2B4",
+    white50: "#FFFFFF50",
     primary0: "#CDCCFF",
     primary25: "#9B99FF",
     primary100: "#5955FF",
-    tertiary: "#93A2B4",
     secondary300: "#1F202A",
     greyScale900: "#0D0D12",
     greyScale500: "#666D80",
@@ -75,7 +79,7 @@ export const tokens = createTokens({
     greyScale100: "#DFE1E7",
     greyScale50: "#ECEFF3",
     otherWhite: "#FFFFFF",
-    white50: "#FFFFFF50",
+    lineGray: "#78788020",
   },
 });
 

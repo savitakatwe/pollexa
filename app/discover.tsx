@@ -2,7 +2,8 @@ import { Button, Image, SizableText, XStack, YStack } from "tamagui";
 import { SafeAreaView, Text, View } from "react-native";
 import React from "react";
 import PollHeader from "@/components/PollHeader/PollHeader";
-//import IconRight from "../assets/icons/arrowRight.svg";
+import ActivePollBox from "@/components/ActivePollBox";
+import { Plus } from "@tamagui/lucide-icons";
 
 const Discover = () => {
   return (
@@ -20,9 +21,7 @@ const Discover = () => {
               height={34}
               width={34}
             />
-            <SizableText color={"$accent"} size={"$xxLarge"}>
-              +
-            </SizableText>
+            <Button icon={<Plus size={"$sz22"} color={"$accent"} />}></Button>
           </XStack>
           <YStack gap={"$sp16"}>
             <SizableText
@@ -32,31 +31,7 @@ const Discover = () => {
             >
               Discover
             </SizableText>
-            <XStack
-              alignItems={"center"}
-              backgroundColor={"$accent"}
-              borderRadius={"$br16"}
-              paddingVertical={"$sp16"}
-              paddingHorizontal={"$sp24"}
-              justifyContent={"space-between"}
-            >
-              <YStack>
-                <SizableText size={"$xxLarge"} fontWeight={600} color={"white"}>
-                  2 Active Polls
-                </SizableText>
-                <SizableText size={"$large"} color={"#FFFFFF50"}>
-                  See Details
-                </SizableText>
-              </YStack>
-              <YStack
-                backgroundColor={"white"}
-                width={30}
-                height={30}
-                borderRadius={"$br5"}
-                alignItems={"center"}
-                justifyContent={"center"}
-              ></YStack>
-            </XStack>
+            <ActivePollBox />
             <PollHeader />
           </YStack>
         </YStack>
