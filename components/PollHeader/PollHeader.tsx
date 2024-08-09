@@ -5,6 +5,7 @@ import { CircleEllipsis } from "@tamagui/lucide-icons";
 import PollBoxHead from "@/components/PollBoxHead";
 import PollQuestion from "@/components/PollQuestion";
 import PollOption from "@/components/PollOption";
+import PollTextQuestion from "@/components/PollTextQuestion";
 
 const PollHeader = () => {
   return (
@@ -18,6 +19,7 @@ const PollHeader = () => {
         {/*line*/}
         <Separator marginVertical={10} backgroundColor={"$lineGray"} />
         <PollQuestion />
+        <PollTextQuestion />
         <PollOption></PollOption>
       </YStack>
     </>

@@ -62,7 +62,7 @@ export const tokens = createTokens({
     sp36: 36,
     true: 0,
   },
-  radius: { 0: 0, 1: 3, br5: 5, br16: 16 },
+  radius: { 0: 0, 1: 3, br5: 5, br10: 10, br16: 16 },
   zIndex: { 0: 0, 1: 100, 2: 200 },
   color: {
     accent: "#5856D6",
