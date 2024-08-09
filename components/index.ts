@@ -1,5 +1,5 @@
 export * from "./ActivePollBox";
-export * from "./PollHeader";
+export * from "./PollBox";
 export * from "./PollBoxHead";
 export * from "./PollQuestion";
 export * from "./PollOption";

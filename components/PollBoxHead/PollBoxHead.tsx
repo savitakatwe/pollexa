@@ -1,23 +1,28 @@
 import { Button, Image, SizableText, XStack } from "tamagui";
 import { CircleEllipsis } from "@tamagui/lucide-icons";
-import React from "react";
+import React, { PropsWithChildren } from "react";
+import { ImageSourcePropType } from "react-native";
 
-const PollBoxHead = () => {
+interface IPollBoxHeadProps {
+  avatarURL: ImageSourcePropType;
+  fullName: string;
+  postTimeline: string;
+}
+const PollBoxHead = ({
+  avatarURL,
+  fullName,
+  postTimeline,
+}: PropsWithChildren<IPollBoxHeadProps>) => {
   return (
     <>
-      <XStack paddingTop={"$sp20"} justifyContent={"space-between"}>
+      <XStack justifyContent={"space-between"}>
         <XStack alignItems={"center"} gap={"$sp5"}>
-          <Image
-            source={require("../../assets/Avatars/Avatar1.png")}
-            alt="Discover"
-            height={34}
-            width={34}
-          />
-          <SizableText size={"$xLarge"}>John Smith</SizableText>
+          <Image source={avatarURL} alt="Discover" height={34} width={34} />
+          <SizableText size={"$xLarge"}>{fullName}</SizableText>
         </XStack>
         <XStack alignItems={"center"} gap={"$sp5"}>
           <SizableText size={"$large"} color={"$tertiary"}>
-            2 months ago
+            {postTimeline}
           </SizableText>
           <Button
             icon={<CircleEllipsis size={"$sz22"} color={"$tertiary"} />}

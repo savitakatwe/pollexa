@@ -1,7 +1,15 @@
 import { SizableText, XStack, YStack } from "tamagui";
-import React from "react";
-
-const PollTextQuestion = () => {
+import React, { PropsWithChildren } from "react";
+interface IPollTextQuestionProps {
+  optionPoint: string;
+  optionText: string;
+  pollPercentage: string;
+}
+const PollTextQuestion = ({
+  optionPoint,
+  optionText,
+  pollPercentage,
+}: PropsWithChildren<IPollTextQuestionProps>) => {
   return (
     <>
       <XStack
@@ -21,16 +29,16 @@ const PollTextQuestion = () => {
             alignItems={"center"}
           >
             <SizableText size={"$large"} fontWeight={"600"}>
-              A
+              {optionPoint}
             </SizableText>
           </XStack>
           <SizableText size={"$large"} color={"$otherWhite"}>
-            This is a no brainer, study!
+            {optionText}
           </SizableText>
         </XStack>
 
         <SizableText size={"$small"} fontWeight={"600"} color={"$otherWhite"}>
-          12%
+          {pollPercentage}
         </SizableText>
       </XStack>
     </>

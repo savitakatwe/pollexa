@@ -1,7 +1,7 @@
 import { Button, Image, SizableText, XStack, YStack } from "tamagui";
 import { SafeAreaView, Text, View } from "react-native";
 import React from "react";
-import PollHeader from "@/components/PollHeader/PollHeader";
+import PollBox from "@/components/PollBox/PollBox";
 import ActivePollBox from "@/components/ActivePollBox";
 import { Plus } from "@tamagui/lucide-icons";
 
@@ -32,7 +32,7 @@ const Discover = () => {
               Discover
             </SizableText>
             <ActivePollBox heading={"2 Active Polls"} />
-            <PollHeader />
+            <PollBox />
           </YStack>
         </YStack>
       </SafeAreaView>

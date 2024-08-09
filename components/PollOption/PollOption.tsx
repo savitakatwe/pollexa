@@ -5,9 +5,6 @@ const PollOption = () => {
   return (
     <>
       <YStack></YStack>
-      <SizableText size={"$small"} color={"$tertiary"}>
-        62 Total Votes
-      </SizableText>
     </>
   );
 };
