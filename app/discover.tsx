@@ -1,5 +1,5 @@
 import { Button, Image, SizableText, XStack, YStack } from "tamagui";
-import { SafeAreaView, Text, View } from "react-native";
+import { SafeAreaView } from "react-native";
 import React from "react";
 import PollBox from "@/components/PollBox/PollBox";
 import ActivePollBox from "@/components/ActivePollBox";
