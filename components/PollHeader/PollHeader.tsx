@@ -13,7 +13,7 @@ const PollHeader = () => {
         >
           <XStack alignItems={"center"} gap={"$sp4"}>
             <Image
-              source={require("../assets/Avatars/Avatar1.png")}
+              source={require("../../assets/Avatars/Avatar1.png")}
               alt="Discover"
               height={34}
               width={34}

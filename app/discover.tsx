@@ -1,7 +1,7 @@
 import { Button, Image, SizableText, XStack, YStack } from "tamagui";
 import { SafeAreaView, Text, View } from "react-native";
 import React from "react";
-import PollHeader from "@/components/PollHeader";
+import PollHeader from "@/components/PollHeader/PollHeader";
 //import IconRight from "../assets/icons/arrowRight.svg";
 
 const Discover = () => {
