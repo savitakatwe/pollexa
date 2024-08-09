@@ -68,6 +68,8 @@ export const tokens = createTokens({
     accent: "#5856D6",
     tertiary: "#93A2B4",
     white50: "#FFFFFF50",
+    timeFontColor: "#5B6D83",
+    questionFontColor: "#02182B",
     primary0: "#CDCCFF",
     primary25: "#9B99FF",
     primary100: "#5955FF",

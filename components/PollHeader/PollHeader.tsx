@@ -3,6 +3,7 @@ import { Button, Image, Separator, SizableText, XStack, YStack } from "tamagui";
 import React from "react";
 import { CircleEllipsis } from "@tamagui/lucide-icons";
 import PollBoxHead from "@/components/PollBoxHead";
+import PollQuestion from "@/components/PollQuestion";
 
 const PollHeader = () => {
   return (
@@ -15,6 +16,7 @@ const PollHeader = () => {
         <PollBoxHead />
         {/*line*/}
         <Separator marginVertical={10} backgroundColor={"$lineGray"} />
+        <PollQuestion />
       </YStack>
     </>
   );
