@@ -44,6 +44,7 @@ export default function RootLayout() {
             name="startScreen"
             options={{ headerTransparent: true, title: "" }}
           />
+
           <Stack.Screen name="+not-found" />
         </Stack>
       </ThemeProvider>

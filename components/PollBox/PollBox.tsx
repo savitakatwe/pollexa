@@ -36,7 +36,6 @@ const PollBox = () => {
           pollPercentage={"12%"}
         />
 
-        <PollOption></PollOption>
         <YStack marginTop={"$sp12"}>
           <SizableText size={"$small"} color={"$tertiary"}>
             62 Total Votes
