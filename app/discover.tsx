@@ -17,7 +17,7 @@ const Discover = () => {
           >
             <Image
               source={require("../assets/Avatars/Avatar1.png")}
-              alt="Discover"
+              alt="Avatar1"
               height={34}
               width={34}
             />
@@ -31,7 +31,7 @@ const Discover = () => {
             >
               Discover
             </SizableText>
-            <ActivePollBox />
+            <ActivePollBox heading={"2 Active Polls"} />
             <PollHeader />
           </YStack>
         </YStack>

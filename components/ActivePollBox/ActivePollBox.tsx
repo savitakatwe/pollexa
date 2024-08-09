@@ -1,8 +1,11 @@
 import { SizableText, YStack, XStack, Button } from "tamagui";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { ArrowRight } from "@tamagui/lucide-icons";
 
-const ActivePollBox = () => {
+interface IActivePollBoxProps {
+  heading: string;
+}
+const ActivePollBox = ({ heading }: PropsWithChildren<IActivePollBoxProps>) => {
   return (
     <>
       <XStack
@@ -15,7 +18,7 @@ const ActivePollBox = () => {
       >
         <YStack>
           <SizableText size={"$xxLarge"} fontWeight={600} color={"white"}>
-            2 Active Polls
+            {heading}
           </SizableText>
           <SizableText size={"$large"} color={"#FFFFFF50"}>
             See Details
