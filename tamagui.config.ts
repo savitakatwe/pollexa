@@ -45,6 +45,7 @@ const bodyFont = createFont({
 export const tokens = createTokens({
   size: {
     0: 0,
+    sz12: 12,
     sz22: 22,
     sz48: 48,
     sz52: 52,

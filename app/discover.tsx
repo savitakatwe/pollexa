@@ -1,11 +1,13 @@
 import { Button, Image, SizableText, XStack, YStack } from "tamagui";
 import { SafeAreaView } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import PollBox from "@/components/PollBox/PollBox";
 import ActivePollBox from "@/components/ActivePollBox";
 import { Plus } from "@tamagui/lucide-icons";
+import { useNavigation } from "expo-router";
 
 const Discover = () => {
+  const navigation = useNavigation();
   return (
     <>
       <SafeAreaView style={{ flex: 1 }}>
@@ -21,7 +23,17 @@ const Discover = () => {
               height={34}
               width={34}
             />
-            <Button icon={<Plus size={"$sz22"} color={"$accent"} />}></Button>
+            <Button
+              icon={
+                <Plus
+                  size={"$sz22"}
+                  color={"$accent"}
+                  onPress={() => {
+                    navigation.navigate("createPoll");
+                  }}
+                />
+              }
+            ></Button>
           </XStack>
           <YStack gap={"$sp16"}>
             <SizableText

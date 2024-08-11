@@ -11,7 +11,8 @@ import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { TamaguiProvider, View } from "@tamagui/core";
-import config from "../tamagui.config"; // your configuration
+import config from "../tamagui.config";
+import { SizableText } from "tamagui"; // your configuration
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -43,6 +44,13 @@ export default function RootLayout() {
           <Stack.Screen
             name="startScreen"
             options={{ headerTransparent: true, title: "" }}
+          />
+          <Stack.Screen
+            name="createPoll"
+            options={{
+              presentation: "modal",
+              title: "New Poll",
+            }}
           />
 
           <Stack.Screen name="+not-found" />
