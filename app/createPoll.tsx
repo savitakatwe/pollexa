@@ -1,6 +1,6 @@
-import { Button, Input, SizableText, XStack, YStack } from "tamagui";
-import { SafeAreaView, Touchable, TouchableOpacity } from "react-native";
-import { useEffect, useState } from "react";
+import { Input, SizableText, XStack, YStack } from "tamagui";
+import { SafeAreaView, TouchableOpacity } from "react-native";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigation } from "expo-router";
 import { Plus, Trash2 } from "@tamagui/lucide-icons";
 
@@ -18,6 +18,9 @@ const createPoll = () => {
         );
       },
     });
+  }, []);
+  const NumberToAlphabet = useCallback((letterIndex: number) => {
+    return String.fromCharCode(letterIndex + "A".charCodeAt(0));
   }, []);
 
   return (
@@ -57,6 +60,7 @@ const createPoll = () => {
                   justifyContent={"space-between"}
                   alignItems={"center"}
                   paddingHorizontal={"$sp16"}
+                  borderRadius={"$br10"}
                 >
                   <XStack
                     width={26}
@@ -71,7 +75,7 @@ const createPoll = () => {
                       color={"$accent"}
                       fontWeight={600}
                     >
-                      A
+                      {NumberToAlphabet(index)}
                     </SizableText>
                   </XStack>
                   <Input
@@ -103,13 +107,7 @@ const createPoll = () => {
           </YStack>
 
           {/*Add New*/}
-          <XStack
-            backgroundColor={"$otherWhite"}
-            paddingHorizontal={"$sp16"}
-            paddingVertical={"$sp8"}
-            borderRadius={"$br10"}
-            alignItems={"center"}
-            gap={"$sp8"}
+          <TouchableOpacity
             onPress={() => {
               setOptionList((prevState) => {
                 prevState.push("");
@@ -118,19 +116,28 @@ const createPoll = () => {
             }}
           >
             <XStack
-              width={31}
-              height={31}
-              backgroundColor={"$accent"}
-              borderRadius={"$br16"}
-              justifyContent={"center"}
+              backgroundColor={"$otherWhite"}
+              paddingHorizontal={"$sp16"}
+              paddingVertical={"$sp8"}
+              borderRadius={"$br10"}
               alignItems={"center"}
+              gap={"$sp8"}
             >
-              <Button icon={Plus} color={"$otherWhite"}></Button>
+              <XStack
+                width={31}
+                height={31}
+                backgroundColor={"$accent"}
+                borderRadius={"$br16"}
+                justifyContent={"center"}
+                alignItems={"center"}
+              >
+                <Plus color={"$otherWhite"} />
+              </XStack>
+              <SizableText size={"$xLarge"} fontWeight={500} color={"$accent"}>
+                Add New
+              </SizableText>
             </XStack>
-            <SizableText size={"$xLarge"} fontWeight={500} color={"$accent"}>
-              Add New
-            </SizableText>
-          </XStack>
+          </TouchableOpacity>
         </YStack>
       </SafeAreaView>
     </>
