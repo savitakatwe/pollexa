@@ -3,22 +3,50 @@ import { SafeAreaView, TouchableOpacity } from "react-native";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigation } from "expo-router";
 import { Plus, Trash2 } from "@tamagui/lucide-icons";
+import firebase from "firebase/compat";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAKnDjlemhzSUZnQAsFGqMb1EKsWMIAmI8",
+  projectId: "pollexa-46eaf",
+};
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 const createPoll = () => {
   const navigation = useNavigation();
   const [optionList, setOptionList] = useState<string[]>([]);
+  const firestore = firebase.firestore();
+  const [pollQuestion, setPollQuestion] = useState("");
+
+  const addPoll = useCallback(() => {
+    console.log("Adding poll:", pollQuestion); // Debug line
+    if (pollQuestion) {
+      firestore
+        .collection("Questions")
+        .add({ question: pollQuestion })
+        .then((result) => {
+          console.log("question added", result);
+        });
+    }
+    return navigation.goBack;
+  }, [pollQuestion, firestore, navigation]);
 
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => {
         return (
-          <TouchableOpacity onPress={navigation.goBack}>
+          <TouchableOpacity onPress={addPoll}>
             <SizableText>Done</SizableText>
           </TouchableOpacity>
         );
       },
     });
   }, []);
+  useEffect(() => {
+    console.log("Updated pollQuestion:", pollQuestion); // Logs the updated state
+  }, [pollQuestion]);
   const NumberToAlphabet = useCallback((letterIndex: number) => {
     return String.fromCharCode(letterIndex + "A".charCodeAt(0));
   }, []);
@@ -41,6 +69,10 @@ const createPoll = () => {
             size={"xLarge"}
             borderRadius={"$br10"}
             backgroundColor={"$otherWhite"}
+            onChangeText={(value) => {
+              setPollQuestion(value);
+              console.log(pollQuestion);
+            }}
           />
           <SizableText
             paddingTop={"$sp20"}
@@ -92,7 +124,7 @@ const createPoll = () => {
                     }}
                   />
                   <TouchableOpacity
-                    onPress={(e) => {
+                    onPress={() => {
                       setOptionList((prevState) => {
                         prevState.splice(index, 1);
                         return [...prevState];
