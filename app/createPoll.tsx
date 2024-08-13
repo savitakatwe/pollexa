@@ -22,7 +22,7 @@ const createPoll = () => {
 
   const addPoll = useCallback(() => {
     console.log("Adding poll:", pollQuestion); // Debug line
-    console.log(optionList);
+    // console.log(optionList);
     if (pollQuestion) {
       firestore
         .collection("Questions")
@@ -32,7 +32,7 @@ const createPoll = () => {
         });
     }
     return navigation.goBack;
-  }, [pollQuestion, navigation]);
+  }, [pollQuestion]);
 
   useEffect(() => {
     navigation.setOptions({
@@ -44,11 +44,12 @@ const createPoll = () => {
         );
       },
     });
-  }, []);
+  }, [addPoll]);
 
   useEffect(() => {
     console.log("Updated pollQuestion:", pollQuestion); // Logs the updated state
   }, [pollQuestion]);
+
   const NumberToAlphabet = useCallback((letterIndex: number) => {
     return String.fromCharCode(letterIndex + "A".charCodeAt(0));
   }, []);
@@ -71,10 +72,7 @@ const createPoll = () => {
             size={"xLarge"}
             borderRadius={"$br10"}
             backgroundColor={"$otherWhite"}
-            onChangeText={(value) => {
-              setPollQuestion(value);
-              console.log(value);
-            }}
+            onChangeText={(value) => setPollQuestion(value)}
           />
           <SizableText
             paddingTop={"$sp20"}
