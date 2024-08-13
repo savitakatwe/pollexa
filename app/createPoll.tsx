@@ -13,37 +13,41 @@ const firebaseConfig = {
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
-
+const firestore = firebase.firestore();
 const createPoll = () => {
   const navigation = useNavigation();
   const [optionList, setOptionList] = useState<string[]>([]);
-  const firestore = firebase.firestore();
+
   const [pollQuestion, setPollQuestion] = useState("");
 
-  const addPoll = useCallback(() => {
-    console.log("Adding poll:", pollQuestion); // Debug line
-    if (pollQuestion) {
-      firestore
-        .collection("Questions")
-        .add({ question: pollQuestion })
-        .then((result) => {
-          console.log("question added", result);
-        });
-    }
-    return navigation.goBack;
-  }, [pollQuestion, firestore, navigation]);
+  const addPoll = useCallback(
+    (pollQuestion) => {
+      console.log("Adding poll:", pollQuestion); // Debug line
+      if (pollQuestion) {
+        firestore
+          .collection("Questions")
+          .add({ question: pollQuestion })
+          .then((result) => {
+            console.log("question added", result);
+          });
+      }
+      return navigation.goBack;
+    },
+    [pollQuestion, navigation],
+  );
 
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => {
         return (
-          <TouchableOpacity onPress={addPoll}>
+          <TouchableOpacity onPress={addPoll(pollQuestion)}>
             <SizableText>Done</SizableText>
           </TouchableOpacity>
         );
       },
     });
   }, []);
+
   useEffect(() => {
     console.log("Updated pollQuestion:", pollQuestion); // Logs the updated state
   }, [pollQuestion]);
