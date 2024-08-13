@@ -20,27 +20,25 @@ const createPoll = () => {
 
   const [pollQuestion, setPollQuestion] = useState("");
 
-  const addPoll = useCallback(
-    (pollQuestion) => {
-      console.log("Adding poll:", pollQuestion); // Debug line
-      if (pollQuestion) {
-        firestore
-          .collection("Questions")
-          .add({ question: pollQuestion })
-          .then((result) => {
-            console.log("question added", result);
-          });
-      }
-      return navigation.goBack;
-    },
-    [pollQuestion, navigation],
-  );
+  const addPoll = useCallback(() => {
+    console.log("Adding poll:", pollQuestion); // Debug line
+    console.log(optionList);
+    if (pollQuestion) {
+      firestore
+        .collection("Questions")
+        .add({ question: pollQuestion })
+        .then((result) => {
+          console.log("question added", result);
+        });
+    }
+    return navigation.goBack;
+  }, [pollQuestion, navigation]);
 
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => {
         return (
-          <TouchableOpacity onPress={addPoll(pollQuestion)}>
+          <TouchableOpacity onPress={addPoll}>
             <SizableText>Done</SizableText>
           </TouchableOpacity>
         );
@@ -75,7 +73,7 @@ const createPoll = () => {
             backgroundColor={"$otherWhite"}
             onChangeText={(value) => {
               setPollQuestion(value);
-              console.log(pollQuestion);
+              console.log(value);
             }}
           />
           <SizableText
@@ -120,9 +118,11 @@ const createPoll = () => {
                     backgroundColor={"$otherWhite"}
                     placeholder={"Option Text"}
                     value={item}
+                    key={index}
                     onChangeText={(value) => {
                       setOptionList((prevState) => {
                         prevState[index] = value;
+                        console.log("optionlist:", optionList);
                         return [...prevState];
                       });
                     }}
