@@ -22,17 +22,17 @@ const CreatePoll = () => {
 
   const addPoll = useCallback(() => {
     console.log("Adding poll:", pollQuestion); // Debug line
-    // console.log(optionList);
+    console.log(optionList);
     if (pollQuestion) {
       firestore
         .collection("Questions")
-        .add({ question: pollQuestion })
+        .add({ question: pollQuestion, pollList: optionList })
         .then((result) => {
           console.log("question added", result);
         });
     }
     navigation.goBack();
-  }, [navigation, pollQuestion]);
+  }, [navigation, optionList, pollQuestion]);
 
   useEffect(() => {
     navigation.setOptions({
