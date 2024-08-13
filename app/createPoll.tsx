@@ -14,7 +14,7 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 const firestore = firebase.firestore();
-const createPoll = () => {
+const CreatePoll = () => {
   const navigation = useNavigation();
   const [optionList, setOptionList] = useState<string[]>([]);
 
@@ -31,8 +31,8 @@ const createPoll = () => {
           console.log("question added", result);
         });
     }
-    return navigation.goBack;
-  }, [pollQuestion]);
+    navigation.goBack();
+  }, [navigation, pollQuestion]);
 
   useEffect(() => {
     navigation.setOptions({
@@ -44,7 +44,7 @@ const createPoll = () => {
         );
       },
     });
-  }, [addPoll]);
+  }, [addPoll, navigation]);
 
   useEffect(() => {
     console.log("Updated pollQuestion:", pollQuestion); // Logs the updated state
@@ -177,4 +177,4 @@ const createPoll = () => {
     </>
   );
 };
-export default createPoll;
+export default CreatePoll;
