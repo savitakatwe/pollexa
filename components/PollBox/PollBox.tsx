@@ -1,11 +1,31 @@
 import { Separator, SizableText, YStack } from "tamagui";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import PollBoxHead from "@/components/PollBoxHead";
 import PollQuestion from "@/components/PollQuestion";
 import PollOption from "@/components/PollOption";
 import PollTextQuestion from "@/components/PollTextQuestion";
+import { ImageSourcePropType } from "react-native";
 
-const PollBox = () => {
+interface IPollBoxProps {
+  avatarURL: ImageSourcePropType;
+  fullName: string;
+  postTimeline: string;
+  lastVoteTimeline: string;
+  questionText: string;
+  optionPoint: string;
+  optionText: string;
+  pollPercentage: string;
+}
+const PollBox = ({
+  avatarURL,
+  fullName,
+  postTimeline,
+  lastVoteTimeline,
+  questionText,
+  optionPoint,
+  optionText,
+  pollPercentage,
+}: PropsWithChildren<IPollBoxProps>) => {
   return (
     <>
       <YStack
@@ -15,25 +35,23 @@ const PollBox = () => {
         paddingVertical={"$sp20"}
       >
         <PollBoxHead
-          avatarURL={require("../../assets/Avatars/Avatar1.png")}
-          fullName={"John Smith"}
-          postTimeline={"2 months ago"}
+          avatarURL={avatarURL}
+          fullName={fullName}
+          postTimeline={postTimeline}
         />
         {/*line*/}
         <Separator marginVertical={10} backgroundColor={"$lineGray"} />
         <YStack marginTop={"$sp12"} marginBottom={"$sp20"}>
           <PollQuestion
-            lastVoteTimeline={"LAST VOTED 1 HOUR AGO"}
-            questionText={
-              "My friend just invited me to his birthday party but I have an exam tomorrow."
-            }
+            lastVoteTimeline={lastVoteTimeline}
+            questionText={questionText}
           />
         </YStack>
 
         <PollTextQuestion
-          optionPoint={"A"}
-          optionText={"This is a no brainer, study!"}
-          pollPercentage={"12%"}
+          optionPoint={optionPoint}
+          optionText={optionText}
+          pollPercentage={pollPercentage}
         />
 
         <YStack marginTop={"$sp12"}>

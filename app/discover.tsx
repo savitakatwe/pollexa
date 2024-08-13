@@ -44,7 +44,18 @@ const Discover = () => {
               Discover
             </SizableText>
             <ActivePollBox heading={"2 Active Polls"} />
-            <PollBox />
+            <PollBox
+              avatarURL={require("../assets/Avatars/Avatar1.png")}
+              fullName={"John Smith"}
+              postTimeline={"2 months ago"}
+              lastVoteTimeline={"LAST VOTED 1 HOUR AGO"}
+              questionText={
+                "My friend just invited me to his birthday party but I have an exam tomorrow."
+              }
+              optionPoint={"A"}
+              optionText={"This is a no brainer, study!"}
+              pollPercentage={"12%"}
+            />
           </YStack>
         </YStack>
       </SafeAreaView>
