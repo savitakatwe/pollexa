@@ -1,13 +1,45 @@
 import { Button, Image, SizableText, XStack, YStack } from "tamagui";
-import { SafeAreaView } from "react-native";
-import React, { useState } from "react";
+import { FlatList, SafeAreaView } from "react-native";
+import React, { useCallback, useEffect, useState } from "react";
 import PollBox from "@/components/PollBox/PollBox";
 import ActivePollBox from "@/components/ActivePollBox";
 import { Plus } from "@tamagui/lucide-icons";
 import { useNavigation } from "expo-router";
+import firebase from "firebase/compat";
+import firestore = firebase.firestore;
 
+interface IPoll {
+  question: string;
+  pollList: string[];
+}
 const Discover = () => {
   const navigation = useNavigation();
+  const [polls, setPolls] = useState<IPoll[]>([]);
+
+  const getPolls = useCallback(() => {
+    return firestore()
+      .collection("Questions")
+      .get()
+      .then((querySnapshot) => {
+        console.log("polls", querySnapshot.size);
+        querySnapshot.forEach((documentSnapshot) => {
+          console.log(documentSnapshot.id, documentSnapshot.data());
+          setPolls((prevState) => [
+            ...prevState,
+            {
+              question: documentSnapshot.get("question"),
+              pollList: documentSnapshot.get("pollList"),
+            },
+          ]);
+        });
+      });
+  }, []);
+  useEffect(() => {
+    console.log("polls", polls);
+  }, [polls]);
+  useEffect(() => {
+    getPolls();
+  }, [getPolls]);
   return (
     <>
       <SafeAreaView style={{ flex: 1 }}>
@@ -44,17 +76,26 @@ const Discover = () => {
               Discover
             </SizableText>
             <ActivePollBox heading={"2 Active Polls"} />
-            <PollBox
-              avatarURL={require("../assets/Avatars/Avatar1.png")}
-              fullName={"John Smith"}
-              postTimeline={"2 months ago"}
-              lastVoteTimeline={"LAST VOTED 1 HOUR AGO"}
-              questionText={
-                "My friend just invited me to his birthday party but I have an exam tomorrow."
-              }
-              optionPoint={"A"}
-              optionText={"This is a no brainer, study!"}
-              pollPercentage={"12%"}
+            <FlatList
+              data={polls}
+              renderItem={({ item, index }) => {
+                return (
+                  <>
+                    <PollBox
+                      key={index}
+                      avatarURL={require("../assets/Avatars/Avatar1.png")}
+                      fullName={"John Smith"}
+                      postTimeline={"2 months ago"}
+                      lastVoteTimeline={"LAST VOTED 1 HOUR AGO"}
+                      questionText={item.question}
+                      optionList={item.pollList}
+                      optionPoint={"A"}
+                      optionText={"This is a no brainer, study!"}
+                      pollPercentage={"12%"}
+                    />
+                  </>
+                );
+              }}
             />
           </YStack>
         </YStack>

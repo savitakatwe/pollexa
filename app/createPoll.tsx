@@ -88,6 +88,7 @@ const CreatePoll = () => {
             {optionList.map((item, index) => {
               return (
                 <XStack
+                  key={index}
                   backgroundColor={"$otherWhite"}
                   justifyContent={"space-between"}
                   alignItems={"center"}

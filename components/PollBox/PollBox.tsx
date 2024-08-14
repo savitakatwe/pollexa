@@ -12,6 +12,7 @@ interface IPollBoxProps {
   postTimeline: string;
   lastVoteTimeline: string;
   questionText: string;
+  optionList: string[];
   optionPoint: string;
   optionText: string;
   pollPercentage: string;
@@ -22,6 +23,7 @@ const PollBox = ({
   postTimeline,
   lastVoteTimeline,
   questionText,
+  optionList,
   optionPoint,
   optionText,
   pollPercentage,
@@ -49,6 +51,7 @@ const PollBox = ({
         </YStack>
 
         <PollTextQuestion
+          optionList={optionList}
           optionPoint={optionPoint}
           optionText={optionText}
           pollPercentage={pollPercentage}
