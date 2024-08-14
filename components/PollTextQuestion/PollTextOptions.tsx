@@ -1,15 +1,15 @@
 import { SizableText, XStack } from "tamagui";
 import React, { PropsWithChildren, useCallback, useState } from "react";
 
-interface IPollTextQuestionProps {
+interface IPollTextOptionsProps {
   optionList: string[];
   pollPercentage: string;
 }
 
-const PollTextQuestion = ({
+const PollTextOptions = ({
   optionList,
   pollPercentage,
-}: PropsWithChildren<IPollTextQuestionProps>) => {
+}: PropsWithChildren<IPollTextOptionsProps>) => {
   const [isSelectedIndex, setIsSelectedIndex] = useState<number>();
   const handleOptionClick = (index: number) => {
     setIsSelectedIndex(index);
@@ -68,4 +68,4 @@ const PollTextQuestion = ({
     </>
   );
 };
-export default PollTextQuestion;
+export default PollTextOptions;

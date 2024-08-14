@@ -2,8 +2,7 @@ import { Separator, SizableText, YStack } from "tamagui";
 import React, { PropsWithChildren } from "react";
 import PollBoxHead from "@/components/PollBoxHead";
 import PollQuestion from "@/components/PollQuestion";
-import PollOption from "@/components/PollOption";
-import PollTextQuestion from "@/components/PollTextQuestion";
+import PollTextOptions from "@/components/PollTextQuestion";
 import { ImageSourcePropType } from "react-native";
 
 interface IPollBoxProps {
@@ -47,7 +46,7 @@ const PollBox = ({
           />
         </YStack>
 
-        <PollTextQuestion
+        <PollTextOptions
           optionList={optionList}
           pollPercentage={pollPercentage}
         />

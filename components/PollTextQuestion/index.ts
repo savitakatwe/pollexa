@@ -1,1 +1,1 @@
-export { default } from "./PollTextQuestion";
+export { default } from "./PollTextOptions";
