@@ -11,6 +11,7 @@ import firestore = firebase.firestore;
 interface IPoll {
   question: string;
   pollList: string[];
+  pollCreatedAt: Date;
 }
 const Discover = () => {
   const navigation = useNavigation();
@@ -29,6 +30,7 @@ const Discover = () => {
             {
               question: documentSnapshot.get("question"),
               pollList: documentSnapshot.get("pollList"),
+              pollCreatedAt: documentSnapshot.get("pollCreatedAt"),
             },
           ]);
         });
@@ -85,7 +87,7 @@ const Discover = () => {
                       key={index}
                       avatarURL={require("../assets/Avatars/Avatar1.png")}
                       fullName={"John Smith"}
-                      postTimeline={"2 months ago"}
+                      postTimeline={item.pollCreatedAt}
                       lastVoteTimeline={"LAST VOTED 1 HOUR AGO"}
                       questionText={item.question}
                       optionList={item.pollList}

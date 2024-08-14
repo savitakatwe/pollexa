@@ -1,6 +1,5 @@
-import { SizableText, XStack, YStack } from "tamagui";
+import { SizableText, XStack } from "tamagui";
 import React, { PropsWithChildren, useCallback, useState } from "react";
-import { map } from "@firebase/util";
 
 interface IPollTextQuestionProps {
   optionList: string[];

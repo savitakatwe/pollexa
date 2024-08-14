@@ -9,7 +9,7 @@ import { ImageSourcePropType } from "react-native";
 interface IPollBoxProps {
   avatarURL: ImageSourcePropType;
   fullName: string;
-  postTimeline: string;
+  postTimeline: Date;
   lastVoteTimeline: string;
   questionText: string;
   optionList: string[];
@@ -27,6 +27,7 @@ const PollBox = ({
   return (
     <>
       <YStack
+        marginBottom={"$sp16"}
         backgroundColor="$otherWhite"
         borderRadius={"$br16"}
         paddingHorizontal={"$sp20"}

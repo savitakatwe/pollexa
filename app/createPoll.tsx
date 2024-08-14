@@ -26,7 +26,11 @@ const CreatePoll = () => {
     if (pollQuestion) {
       firestore
         .collection("Questions")
-        .add({ question: pollQuestion, pollList: optionList })
+        .add({
+          question: pollQuestion,
+          pollList: optionList,
+          pollCreatedAt: Date.now(),
+        })
         .then((result) => {
           console.log("question added", result);
         });
