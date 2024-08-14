@@ -22,6 +22,7 @@ const PollTextQuestion = ({
       {optionList?.map((option, index) => (
         <XStack
           key={index}
+          marginBottom={"$sp5"}
           backgroundColor={isSelectedIndex === index ? "$accent" : "$optionBg"}
           padding={"$sp8"}
           borderRadius={"$br10"}

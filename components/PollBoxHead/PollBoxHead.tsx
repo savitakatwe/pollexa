@@ -11,7 +11,7 @@ dayjs.extend(relativeTime);
 interface IPollBoxHeadProps {
   avatarURL: ImageSourcePropType;
   fullName: string;
-  postTimeline: string;
+  postTimeline: Date;
 }
 const PollBoxHead = ({
   avatarURL,
