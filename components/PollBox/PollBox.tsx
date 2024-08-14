@@ -13,8 +13,6 @@ interface IPollBoxProps {
   lastVoteTimeline: string;
   questionText: string;
   optionList: string[];
-  optionPoint: string;
-  optionText: string;
   pollPercentage: string;
 }
 const PollBox = ({
@@ -24,8 +22,6 @@ const PollBox = ({
   lastVoteTimeline,
   questionText,
   optionList,
-  optionPoint,
-  optionText,
   pollPercentage,
 }: PropsWithChildren<IPollBoxProps>) => {
   return (
@@ -52,8 +48,6 @@ const PollBox = ({
 
         <PollTextQuestion
           optionList={optionList}
-          optionPoint={optionPoint}
-          optionText={optionText}
           pollPercentage={pollPercentage}
         />
 

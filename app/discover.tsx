@@ -89,8 +89,6 @@ const Discover = () => {
                       lastVoteTimeline={"LAST VOTED 1 HOUR AGO"}
                       questionText={item.question}
                       optionList={item.pollList}
-                      optionPoint={"A"}
-                      optionText={"This is a no brainer, study!"}
                       pollPercentage={"12%"}
                     />
                   </>

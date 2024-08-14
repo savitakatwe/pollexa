@@ -4,20 +4,16 @@ import { map } from "@firebase/util";
 
 interface IPollTextQuestionProps {
   optionList: string[];
-  optionPoint: string;
-  optionText: string;
   pollPercentage: string;
 }
 
 const PollTextQuestion = ({
   optionList,
-  optionPoint,
-  optionText,
   pollPercentage,
 }: PropsWithChildren<IPollTextQuestionProps>) => {
-  const [isSelected, setIsSelected] = useState(false);
-  const handleOptionClick = () => {
-    setIsSelected(!isSelected);
+  const [isSelectedIndex, setIsSelectedIndex] = useState<number>();
+  const handleOptionClick = (index: number) => {
+    setIsSelectedIndex(index);
   };
   const NumberToAlphabet = useCallback((letterIndex: number) => {
     return String.fromCharCode(letterIndex + "A".charCodeAt(0));
@@ -27,12 +23,12 @@ const PollTextQuestion = ({
       {optionList?.map((option, index) => (
         <XStack
           key={index}
-          backgroundColor={isSelected ? "$accent" : "$optionBg"}
+          backgroundColor={isSelectedIndex === index ? "$accent" : "$optionBg"}
           padding={"$sp8"}
           borderRadius={"$br10"}
           alignItems={"center"}
           justifyContent={"space-between"}
-          onPress={handleOptionClick} // Handle click event
+          onPress={() => handleOptionClick(index)} // Handle click event
           cursor="pointer" // Add pointer cursor to indicate clickable area
         >
           <XStack alignItems={"center"} gap={"$sp8"}>
@@ -50,7 +46,9 @@ const PollTextQuestion = ({
             </XStack>
             <SizableText
               size={"$large"}
-              color={isSelected ? "$optionBg" : "$questionFontColor"}
+              color={
+                isSelectedIndex === index ? "$optionBg" : "$questionFontColor"
+              }
             >
               {option}
             </SizableText>
@@ -59,7 +57,9 @@ const PollTextQuestion = ({
           <SizableText
             size={"$small"}
             fontWeight={"600"}
-            color={isSelected ? "$optionBg" : "$questionFontColor"}
+            color={
+              isSelectedIndex === index ? "$optionBg" : "$questionFontColor"
+            }
           >
             {pollPercentage}
           </SizableText>
