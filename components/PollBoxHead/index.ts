@@ -1,1 +1,1 @@
-export { default } from "./PollBoxHead";
+export { default as PollBoxHead } from "./PollBoxHead";

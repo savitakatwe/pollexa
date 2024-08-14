@@ -2,7 +2,7 @@ import { Button, Image, SizableText, XStack, YStack } from "tamagui";
 import { FlatList, SafeAreaView } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
 import PollBox from "@/components/PollBox/PollBox";
-import ActivePollBox from "@/components/ActivePollBox";
+import { ActivePollBox } from "@/components";
 import { Plus } from "@tamagui/lucide-icons";
 import { useNavigation } from "expo-router";
 import firebase from "firebase/compat";
@@ -17,24 +17,20 @@ const Discover = () => {
   const navigation = useNavigation();
   const [polls, setPolls] = useState<IPoll[]>([]);
 
-  const getPolls = useCallback(() => {
-    return firestore()
-      .collection("Questions")
-      .get()
-      .then((querySnapshot) => {
-        console.log("polls", querySnapshot.size);
-        querySnapshot.forEach((documentSnapshot) => {
-          console.log(documentSnapshot.id, documentSnapshot.data());
-          setPolls((prevState) => [
-            ...prevState,
-            {
-              question: documentSnapshot.get("question"),
-              pollList: documentSnapshot.get("pollList"),
-              pollCreatedAt: documentSnapshot.get("pollCreatedAt"),
-            },
-          ]);
-        });
-      });
+  const getPolls = useCallback(async () => {
+    const querySnapshot = await firestore().collection("Questions").get();
+    console.log("polls", querySnapshot.size);
+    querySnapshot.forEach((documentSnapshot) => {
+      console.log(documentSnapshot.id, documentSnapshot.data());
+      setPolls((prevState) => [
+        ...prevState,
+        {
+          question: documentSnapshot.get("question"),
+          pollList: documentSnapshot.get("pollList"),
+          pollCreatedAt: documentSnapshot.get("pollCreatedAt"),
+        },
+      ]);
+    });
   }, []);
   useEffect(() => {
     console.log("polls", polls);

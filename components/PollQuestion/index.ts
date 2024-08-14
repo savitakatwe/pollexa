@@ -1,1 +1,1 @@
-export { default } from "./PollQuestion";
+export { default as PollQuestion } from "./PollQuestion";
