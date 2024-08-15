@@ -1,8 +1,8 @@
 import { Separator, SizableText, YStack } from "tamagui";
 import React, { PropsWithChildren } from "react";
-import PollBoxHead from "@/components/PollBoxHead";
-import PollQuestion from "@/components/PollQuestion";
-import PollTextOptions from "../PollTextOptions";
+import { PollBoxHead } from "@/components";
+import { PollQuestion } from "@/components";
+import { PollTextOptions } from "@/components";
 import { ImageSourcePropType } from "react-native";
 
 interface IPollBoxProps {

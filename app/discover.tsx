@@ -1,5 +1,5 @@
 import { Button, Image, SizableText, XStack, YStack } from "tamagui";
-import { FlatList, SafeAreaView } from "react-native";
+import { FlatList, SafeAreaView, TouchableOpacity } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
 import PollBox from "@/components/PollBox/PollBox";
 import { ActivePollBox } from "@/components";
@@ -33,48 +33,55 @@ const Discover = () => {
     });
   }, []);
   useEffect(() => {
-    console.log("polls", polls);
-  }, [polls]);
-  useEffect(() => {
-    getPolls();
-  }, [getPolls]);
-  return (
-    <>
-      <SafeAreaView style={{ flex: 1 }}>
-        <YStack paddingHorizontal={"$sp16"}>
-          <XStack
-            paddingVertical={"$sp4"}
-            alignItems={"center"}
-            justifyContent={"space-between"}
-          >
+    navigation.setOptions({
+      headerLeft: () => {
+        return (
+          <>
             <Image
               source={require("../assets/Avatars/Avatar1.png")}
               alt="Avatar1"
               height={34}
               width={34}
             />
-            <Button
-              icon={
-                <Plus
-                  size={"$sz22"}
-                  color={"$accent"}
-                  onPress={() => {
-                    navigation.navigate("createPoll");
-                  }}
-                />
-              }
-            ></Button>
-          </XStack>
+          </>
+        );
+      },
+      headerRight: () => {
+        return (
+          <Plus
+            size={"$sz22"}
+            color={"$accent"}
+            onPress={() => {
+              navigation.navigate("createPoll");
+            }}
+          />
+        );
+      },
+    });
+  }, [navigation]);
+  useEffect(() => {
+    getPolls();
+  }, [getPolls]);
+  return (
+    <>
+      <SafeAreaView style={{ flex: 1 }}>
+        <YStack>
           <YStack gap={"$sp16"}>
-            <SizableText
-              paddingVertical={"$sp8"}
-              size={"$xxLarge"}
-              fontWeight={"700"}
-            >
-              Discover
-            </SizableText>
-            <ActivePollBox heading={"2 Active Polls"} />
             <FlatList
+              ListHeaderComponent={
+                <>
+                  <YStack paddingHorizontal={"$sp16"}>
+                    <SizableText
+                      paddingVertical={"$sp8"}
+                      size={"$xxLarge"}
+                      fontWeight={"700"}
+                    >
+                      Discover
+                    </SizableText>
+                    <ActivePollBox heading={"2 Active Polls"} />
+                  </YStack>
+                </>
+              }
               data={polls}
               renderItem={({ item, index }) => {
                 return (
