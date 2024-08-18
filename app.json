@@ -18,6 +18,7 @@
       "bundleIdentifier": "com.company.pollexa"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -30,7 +31,8 @@
     },
     "plugins": [
       "expo-router",
-      "@react-native-firebase/app"
+      "@react-native-firebase/app",
+      "@react-native-google-signin/google-signin"
     ],
     "experiments": {
       "typedRoutes": true

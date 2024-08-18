@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "344583193513",
+    "firebase_url": "https://pollexa-46eaf-default-rtdb.firebaseio.com",
+    "project_id": "pollexa-46eaf",
+    "storage_bucket": "pollexa-46eaf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344583193513:android:e6c1e75488bd7a377fbab8",
+        "android_client_info": {
+          "package_name": "com.company.pollexa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344583193513-0d44rlu033umug23qk7qtilk7suub5ep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSHHZRnOVb7fqeFsRsPDcvu0PD0cYBFn8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344583193513-0d44rlu033umug23qk7qtilk7suub5ep.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "344583193513-kosj6a3j2u7aj7f9pqegfdgl95406tnc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.company.pollexa"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

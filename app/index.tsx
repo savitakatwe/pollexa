@@ -6,8 +6,8 @@ const Index = () => {
     <>
       <Text>Hello World!</Text>
       {/*<Redirect href={"/createPoll"} />*/}
-      <Redirect href={"/discover"} />
-      {/*<Redirect href={"/startScreen"} />*/}
+      {/*<Redirect href={"/discover"} />*/}
+      <Redirect href={"/startScreen"} />
     </>
   );
 };
