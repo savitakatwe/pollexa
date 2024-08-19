@@ -8,8 +8,6 @@ import {
   View,
 } from "react-native";
 import { Button, H3, Image, SizableText, XStack, YStack } from "tamagui";
-import auth from "@react-native-firebase/auth";
-import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 interface IData {
   id: number;
@@ -46,21 +44,6 @@ const imageSources: { [key: string]: any } = {
   onboardingImage3: require("../assets/images/onboardingImage3.png"),
 };
 const { width } = Dimensions.get("window");
-async function onGoogleButtonPress() {
-  console.log("onGoogleButtonPress");
-  // Check if your device supports Google Play
-  await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-  // Get the users ID token
-  const { idToken } = await GoogleSignin.signIn();
-
-  // Create a Google credential with the token
-  const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-  // Sign-in the user with the credential
-  const user = auth().signInWithCredential(googleCredential);
-  console.log(user);
-  return user;
-}
 
 const StartScreen = () => {
   return (
@@ -90,7 +73,7 @@ const StartScreen = () => {
           )}
         />
         <XStack paddingHorizontal={24}>
-          <TouchableOpacity onPress={onGoogleButtonPress}>
+          <TouchableOpacity>
             <Button
               flex={1}
               // onPress={() =>

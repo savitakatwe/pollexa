@@ -12,17 +12,11 @@ import "react-native-reanimated";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { TamaguiProvider, View } from "@tamagui/core";
 import config from "../tamagui.config";
-import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 import { SizableText } from "tamagui"; // your configuration
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
-
-GoogleSignin.configure({
-  webClientId:
-    "344583193513-0d44rlu033umug23qk7qtilk7suub5ep.apps.googleusercontent.com",
-});
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
