@@ -21,8 +21,6 @@ const CreatePoll = () => {
   const [pollQuestion, setPollQuestion] = useState("");
 
   const addPoll = useCallback(() => {
-    console.log("Adding poll:", pollQuestion); // Debug line
-    console.log(optionList);
     if (pollQuestion) {
       firestore
         .collection("Questions")
@@ -31,9 +29,7 @@ const CreatePoll = () => {
           pollList: optionList,
           pollCreatedAt: Date.now(),
         })
-        .then((result) => {
-          console.log("question added", result);
-        });
+        .then((result) => {});
     }
     navigation.goBack();
   }, [navigation, optionList, pollQuestion]);
@@ -49,10 +45,6 @@ const CreatePoll = () => {
       },
     });
   }, [addPoll, navigation]);
-
-  useEffect(() => {
-    console.log("Updated pollQuestion:", pollQuestion); // Logs the updated state
-  }, [pollQuestion]);
 
   const NumberToAlphabet = useCallback((letterIndex: number) => {
     return String.fromCharCode(letterIndex + "A".charCodeAt(0));
@@ -125,7 +117,6 @@ const CreatePoll = () => {
                     onChangeText={(value) => {
                       setOptionList((prevState) => {
                         prevState[index] = value;
-                        console.log("optionlist:", optionList);
                         return [...prevState];
                       });
                     }}

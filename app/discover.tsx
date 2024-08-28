@@ -7,6 +7,7 @@ import { Plus } from "@tamagui/lucide-icons";
 import { useNavigation } from "expo-router";
 import firebase from "firebase/compat";
 import firestore = firebase.firestore;
+import { useUser } from "@clerk/clerk-expo";
 
 interface IPoll {
   question: string;
@@ -16,12 +17,15 @@ interface IPoll {
 const Discover = () => {
   const navigation = useNavigation();
   const [polls, setPolls] = useState<IPoll[]>([]);
+  const { user } = useUser();
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   const getPolls = useCallback(async () => {
     const querySnapshot = await firestore().collection("Questions").get();
-    console.log("polls", querySnapshot.size);
     querySnapshot.forEach((documentSnapshot) => {
-      console.log(documentSnapshot.id, documentSnapshot.data());
       setPolls((prevState) => [
         ...prevState,
         {

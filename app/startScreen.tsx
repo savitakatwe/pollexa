@@ -1,11 +1,7 @@
-import React from "react";
-import {
-  Dimensions,
-  FlatList,
-  SafeAreaView,
-  TouchableOpacity,
-} from "react-native";
+import React, { useCallback } from "react";
+import { Dimensions, FlatList, SafeAreaView } from "react-native";
 import { Button, H3, Image, SizableText, XStack, YStack } from "tamagui";
+import { useOAuth } from "@clerk/clerk-expo";
 
 interface IData {
   id: number;
@@ -44,6 +40,15 @@ const imageSources: { [key: string]: any } = {
 const { width } = Dimensions.get("window");
 
 const StartScreen = () => {
+  const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+
+  const signIn = useCallback(async () => {
+    const { createdSessionId, setActive } = await startOAuthFlow();
+    if (createdSessionId) {
+      setActive?.({ session: createdSessionId });
+    }
+  }, [startOAuthFlow]);
+
   return (
     <>
       <SafeAreaView>
@@ -71,17 +76,7 @@ const StartScreen = () => {
           )}
         />
         <XStack paddingHorizontal={24}>
-          <TouchableOpacity>
-            <Button
-            // onPress={() =>
-            //   onGoogleButtonPress().then(() =>
-            //     console.log("Signed in with Google!"),
-            //   )
-            // }
-            >
-              Sign in with Google
-            </Button>
-          </TouchableOpacity>
+          <Button onPress={signIn}>Sign in with Google</Button>
         </XStack>
       </SafeAreaView>
     </>
