@@ -3,9 +3,7 @@ import {
   Dimensions,
   FlatList,
   SafeAreaView,
-  Text,
   TouchableOpacity,
-  View,
 } from "react-native";
 import { Button, H3, Image, SizableText, XStack, YStack } from "tamagui";
 
@@ -48,7 +46,7 @@ const { width } = Dimensions.get("window");
 const StartScreen = () => {
   return (
     <>
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView>
         <FlatList
           pagingEnabled={true}
           horizontal={true}
@@ -75,12 +73,11 @@ const StartScreen = () => {
         <XStack paddingHorizontal={24}>
           <TouchableOpacity>
             <Button
-              flex={1}
-              // onPress={() =>
-              //   onGoogleButtonPress().then(() =>
-              //     console.log("Signed in with Google!"),
-              //   )
-              // }
+            // onPress={() =>
+            //   onGoogleButtonPress().then(() =>
+            //     console.log("Signed in with Google!"),
+            //   )
+            // }
             >
               Sign in with Google
             </Button>

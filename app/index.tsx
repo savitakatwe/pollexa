@@ -1,13 +1,16 @@
-import { Text } from "react-native";
 import { Redirect } from "expo-router";
-import Discover from "@/app/discover";
+import { SignedIn, SignedOut } from "@clerk/clerk-expo";
 const Index = () => {
   return (
     <>
-      <Text>Hello World!</Text>
+      <SignedIn>
+        <Redirect href={"/discover"} />
+      </SignedIn>
+      <SignedOut>
+        <Redirect href={"/startScreen"} />
+      </SignedOut>
       {/*<Redirect href={"/createPoll"} />*/}
-      {/*<Redirect href={"/discover"} />*/}
-      <Redirect href={"/startScreen"} />
+      {/*<Redirect href={"/startScreen"} />*/}
     </>
   );
 };

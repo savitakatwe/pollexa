@@ -1,7 +1,7 @@
 import { Button, Image, SizableText, XStack, YStack } from "tamagui";
 import { FlatList, SafeAreaView, TouchableOpacity } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
-import PollBox from "@/components/PollBox/PollBox";
+import { PollBox } from "@/components";
 import { ActivePollBox } from "@/components";
 import { Plus } from "@tamagui/lucide-icons";
 import { useNavigation } from "expo-router";
