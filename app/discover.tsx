@@ -22,7 +22,7 @@ const Discover = () => {
   const { signOut, session } = useClerk();
 
   useEffect(() => {
-    console.log(user);
+    // console.log(user);
   }, [user]);
 
   const googleSignOut = useCallback(async () => {

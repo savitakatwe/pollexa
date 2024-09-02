@@ -4,11 +4,12 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigation } from "expo-router";
 import { Plus, Trash2 } from "@tamagui/lucide-icons";
 import firebase from "firebase/compat";
+import { firebaseConfig } from "@/firebaseConfig";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAKnDjlemhzSUZnQAsFGqMb1EKsWMIAmI8",
-  projectId: "pollexa-46eaf",
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyAKnDjlemhzSUZnQAsFGqMb1EKsWMIAmI8",
+//   projectId: "pollexa-46eaf",
+// };
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);

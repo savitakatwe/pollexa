@@ -1,8 +1,12 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { Dimensions, FlatList, SafeAreaView } from "react-native";
 import { Button, H3, Image, SizableText, XStack, YStack } from "tamagui";
-import { useOAuth } from "@clerk/clerk-expo";
+import { useOAuth, useUser } from "@clerk/clerk-expo";
 import { useNavigation } from "expo-router";
+import firebase from "firebase/compat";
+import firestore = firebase.firestore;
+import { db } from "@/firebaseConfig"; // Ensure the correct path to your Firebase config
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 interface IData {
   id: number;
@@ -43,6 +47,43 @@ const { width } = Dimensions.get("window");
 const StartScreen = () => {
   const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
   const navigation = useNavigation();
+  const { user } = useUser();
+  const firestore = firebase.firestore();
+
+  useEffect(() => {
+    const checkAndInsertUser = async () => {
+      try {
+        console.log(user);
+        // @ts-ignore
+        const userDocRef = doc(db, "users", user.id);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (!userDocSnap.exists()) {
+          // User doesn't exist, so add them to the Firestore
+          await setDoc(userDocRef, {
+            // @ts-ignore
+            id: user.id,
+            // @ts-ignore
+            email: user.emailAddresses[0].emailAddress,
+            // @ts-ignore
+            username: user.fullName,
+            // @ts-ignore
+            createdAt: user.createdAt,
+            updatedAt: new Date(),
+          });
+          console.log("User added to Firestore");
+        } else {
+          console.log("User already exists in Firestore");
+        }
+      } catch (error) {
+        console.error("Error checking or adding user: ", error);
+      }
+    };
+
+    if (user) {
+      checkAndInsertUser();
+    }
+  }, [user]);
 
   const signIn = useCallback(async () => {
     const { createdSessionId, setActive } = await startOAuthFlow();
