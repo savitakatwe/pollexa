@@ -121,8 +121,18 @@ const StartScreen = () => {
             </>
           )}
         />
-        <XStack paddingHorizontal={24}>
-          <Button onPress={signIn}>Sign in with Google</Button>
+        <XStack justifyContent={"center"}>
+          <Button
+            backgroundColor={"$accent"}
+            flexGrow={1}
+            fontSize={"$large"}
+            marginHorizontal={"$sp20"}
+            borderRadius={"$br16"}
+            color={"$otherWhite"}
+            onPress={signIn}
+          >
+            Sign in with Google
+          </Button>
         </XStack>
       </SafeAreaView>
     </>
