@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { Dimensions, FlatList, SafeAreaView } from "react-native";
 import { Button, H3, Image, SizableText, XStack, YStack } from "tamagui";
 import { useOAuth } from "@clerk/clerk-expo";
+import { useNavigation } from "expo-router";
 
 interface IData {
   id: number;
@@ -41,13 +42,15 @@ const { width } = Dimensions.get("window");
 
 const StartScreen = () => {
   const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+  const navigation = useNavigation();
 
   const signIn = useCallback(async () => {
     const { createdSessionId, setActive } = await startOAuthFlow();
     if (createdSessionId) {
       setActive?.({ session: createdSessionId });
     }
-  }, [startOAuthFlow]);
+    navigation.navigate("discover");
+  }, [navigation, startOAuthFlow]);
 
   return (
     <>

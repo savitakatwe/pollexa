@@ -1,5 +1,5 @@
 import { Button, Image, SizableText, XStack, YStack } from "tamagui";
-import { FlatList, SafeAreaView, TouchableOpacity } from "react-native";
+import { FlatList, SafeAreaView, Text, TouchableOpacity } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
 import { PollBox } from "@/components";
 import { ActivePollBox } from "@/components";
@@ -7,7 +7,8 @@ import { Plus } from "@tamagui/lucide-icons";
 import { useNavigation } from "expo-router";
 import firebase from "firebase/compat";
 import firestore = firebase.firestore;
-import { useUser } from "@clerk/clerk-expo";
+import { useClerk, useUser } from "@clerk/clerk-expo";
+import { signOut } from "@firebase/auth";
 
 interface IPoll {
   question: string;
@@ -18,6 +19,7 @@ const Discover = () => {
   const navigation = useNavigation();
   const [polls, setPolls] = useState<IPoll[]>([]);
   const { user } = useUser();
+  const { signOut, session } = useClerk();
 
   useEffect(() => {
     console.log(user);
@@ -36,6 +38,14 @@ const Discover = () => {
       ]);
     });
   }, []);
+
+  async function googleSignOut() {
+    await signOut();
+    navigation.navigate("startScreen");
+    console.log("Token after signout: ", await session?.getToken());
+    await session?.remove();
+    console.log("Token after session remove: ", await session?.getToken());
+  }
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => {
@@ -47,6 +57,7 @@ const Discover = () => {
               height={34}
               width={34}
             />
+            <Button onPress={googleSignOut}> Sign Out</Button>
           </>
         );
       },
