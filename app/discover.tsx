@@ -25,6 +25,14 @@ const Discover = () => {
     console.log(user);
   }, [user]);
 
+  const googleSignOut = useCallback(async () => {
+    await signOut();
+    navigation.navigate("startScreen");
+    console.log("Token after signout: ", await session?.getToken());
+    await session?.remove();
+    console.log("Token after session remove: ", await session?.getToken());
+  }, [navigation, session, signOut]);
+
   const getPolls = useCallback(async () => {
     const querySnapshot = await firestore().collection("Questions").get();
     querySnapshot.forEach((documentSnapshot) => {
@@ -39,13 +47,6 @@ const Discover = () => {
     });
   }, []);
 
-  async function googleSignOut() {
-    await signOut();
-    navigation.navigate("startScreen");
-    console.log("Token after signout: ", await session?.getToken());
-    await session?.remove();
-    console.log("Token after session remove: ", await session?.getToken());
-  }
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => {
