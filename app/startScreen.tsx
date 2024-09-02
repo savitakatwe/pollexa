@@ -68,6 +68,8 @@ const StartScreen = () => {
             // @ts-ignore
             username: user.fullName,
             // @ts-ignore
+            imageUrl: user.imageUrl,
+            // @ts-ignore
             createdAt: user.createdAt,
             updatedAt: new Date(),
           });
