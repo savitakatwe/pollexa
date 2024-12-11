@@ -126,7 +126,7 @@ const StartScreen = () => {
             backgroundColor={"$accent"}
             flexGrow={1}
             fontSize={"$large"}
-            marginHorizontal={"$sp20"}
+            marginHorizontal={"$sp24"}
             borderRadius={"$br16"}
             color={"$otherWhite"}
             onPress={signIn}
